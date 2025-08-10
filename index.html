@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Domer Gerbese | IT & Design Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* General Reset and Theme */
+    * {
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f2f2f2, #e6f2ff);
+      color: #333;
+      cursor: url('https://cdn.custom-cursor.com/db/2927/32/pointer-clicker-cursor.png'), auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(to right, #2b2b2b, #1f1f1f);
+      color: white;
+      padding: 4rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* Nav Bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: #111;
+      padding: 0.75rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00d8a7;
+    }
+
+    /* Sections */
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #2b2b2b;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    /* About with image hover */
+    .about-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .about-flex img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-flex img:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .project-card {
+      background: #f4f4f4;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .project-card h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .project-card p {
+      padding: 0 1rem;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #2b2b2b;
+      color: white;
+    }
+
+    .icon {
+      margin-right: 8px;
+      color: #00d8a7;
+    }
+
+    a {
+      color: #0077cc;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    #lightboxClose {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Domer Colegado Gerbese</h1>
+  <p>BS in Information Technology • Programmer & Designer</p>
+</header>
+
+<nav>
+  <a href="#about"><i class="fas fa-user icon"></i>About</a>
+  <a href="#skills"><i class="fas fa-code icon"></i>Skills</a>
+  <a href="#projects"><i class="fas fa-briefcase icon"></i>Projects</a>
+  <a href="#certifications"><i class="fas fa-certificate icon"></i>Certifications</a>
+  <a href="#contact"><i class="fas fa-envelope icon"></i>Contact</a>
+</nav>
+
+<section id="about">
+  <h2><i class="fas fa-user icon"></i>About Me</h2>
+  <div class="about-flex">
+    <img src="images/profile.jpg" alt="Domer Gerbese" />
+    <div>
+      <p>Hello! I'm <strong>Domer Colegado Gerbese</strong>, a graduate of BS in Information Technology with a strong interest in both programming and design. I have experience as an Account Officer at OnePuhunan and completed my OJT as a Layout Designer. I’m passionate about building user-friendly digital solutions and modern interfaces.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2><i class="fas fa-code icon"></i>Skills</h2>
+  <ul>
+    <li>Front-End Development (HTML, CSS, JavaScript)</li>
+    <li>Back-End Development (PHP, MySQL)</li>
+    <li>UI/UX Design</li>
+    <li>Graphic Design (Canva, Adobe tools)</li>
+    <li>Responsive Web Design</li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h2><i class="fas fa-briefcase icon"></i>Projects</h2>
+  <div class="gallery">
+    <div class="project-card">
+      <img src="images/classroom.jpg" alt="E-Classroom Platform" onclick="openLightbox(this)" />
+      <h3>E-Classroom Platform</h3>
+      <p>A web system for managing assignments, announcements, and quizzes.</p>
+    </div>
+    <div class="project-card">
+      <img src="images/portfolio.jpg" alt="Portfolio Website" onclick="openLightbox(this)" />
+      <h3>Portfolio Website</h3>
+      <p>This personal site showcasing my IT and design skills.</p>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <h2><i class="fas fa-certificate icon"></i>Certifications</h2>
+  <p><strong>On-the-Job Training (OJT)</strong> as a Layout Designer – Developed layout skills using design tools for academic materials and digital outputs.</p>
+</section>
+
+<section id="contact">
+  <h2><i class="fas fa-envelope icon"></i>Contact Me</h2>
+  <p><i class="fas fa-envelope icon"></i>Email: your.email@example.com</p>
+  <p><i class="fab fa-linkedin icon"></i>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
+  <p><i class="fab fa-github icon"></i>GitHub: <a href="#">github.com/yourusername</a></p>
+</section>
+
+<footer>
+  &copy; 2025 Domer Gerbese. All rights reserved.
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span id="lightboxClose" onclick="closeLightbox()">&times;</span>
+  <img id="lightboxImg" src="" alt="Expanded Project" />
+</div>
+
+<script>
+  // Reveal animation
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  // Lightbox
+  function openLightbox(img) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    lightboxImg.src = img.src;
+    lightbox.style.display = "flex";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeLightbox();
+  });
+</script>
+
+</body>
+</html>
